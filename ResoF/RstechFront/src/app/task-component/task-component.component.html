@@ -1,0 +1,32 @@
+<!-- src/app/task.component.html -->
+<div class="container">
+  <h1 class="mt-4 mb-4">Task Management System</h1>
+  <ul class="list-group">
+    <li *ngFor="let task of tasks" class="list-group-item d-flex justify-content-between align-items-center">
+      {{ task.taskName }}
+      <div>
+        <button class="btn btn-danger m-1" (click)="deleteTask(task.id!)">Delete</button>
+        <button class="btn btn-primary m-1" (click)="viewTaskDetails(task.id!)">Details</button>
+        <button class="btn btn-warning m-1" (click)="updateTask(task)">Edit</button>
+      </div>
+    </li>
+  </ul>
+  <form class="mt-4" (submit)="addTask()">
+    <div class="form-group">
+      <label for="taskName">Task Name:</label>
+      <input [(ngModel)]="newTask.taskName" id="taskName" name="taskName" class="form-control" placeholder="Task Name" required>
+    </div>
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea [(ngModel)]="newTask.description" id="description" name="description" class="form-control" placeholder="Task Description"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="dueDate">Due Date:</label>
+      <input [(ngModel)]="newTask.dueDate" id="dueDate" name="dueDate" type="date" class="form-control">
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">{{ selectedTask ? 'Update Task' : 'Add Task' }}</button>
+  </form>
+</div>
+
+  
